@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useContext } from 'react';
 //named imports use curly brackets
-import { useRouter } from 'next/router';
-import data from '../../utilities/data';
+// import { useRouter } from 'next/router';
+// import data from '../../utilities/data';
 import Layout from '../../components/Layout';
 import {
   Grid,
@@ -15,18 +15,40 @@ import {
 import NextLink from 'next/link';
 import useStyles from '../../utilities/styles';
 import Image from 'next/image';
+import Product from '../../models/Product';
+import db from '../../utilities/db';
+import axios from 'axios';
+import { Store } from '../../utilities/store';
+import { useRouter } from 'next/router';
 
-export default function ProductScreen() {
-  const classes = useStyles();
+export default function ProductScreen(props) {
   const router = useRouter();
-  const { slug } = router.query;
+  const { state, dispatch } = useContext(Store);
+  const classes = useStyles();
+  const { product } = props;
+
+  // const router = useRouter();
+  // const { slug } = router.query;
 
   //fetch product from data.js based on url
   //useRouter from react to get the slug from url
-  const product = data.products.find((a) => a.slug === slug);
+  // const product = data.products.find((a) => a.slug === slug);
+
   if (!product) {
     return <div> Product not found</div>;
   }
+  const addToCartHandler = async () => {
+    const existItem = state.cart.cartItems.find((x) => x._id === product._id);
+    const quantity = existItem ? existItem.quantity + 1 : 1;
+    const { data } = await axios.get(`/api/products/${product._id}`);
+
+    if (data.countInStock < quantity) {
+      window.alert('The product is out of stock. It will be re-stocked soon.');
+      return;
+    }
+    dispatch({ type: 'CART_ADD_ITEM', payload: { ...product, quantity } });
+    router.push('/cart');
+  };
 
   return (
     <Layout title={product.name} description={product.description}>
@@ -87,7 +109,12 @@ export default function ProductScreen() {
               </Grid>
             </ListItem>
             <ListItem>
-              <Button fullWidth variant="contained" color="primary">
+              <Button
+                fullWidth
+                variant="contained"
+                color="primary"
+                onClick={addToCartHandler}
+              >
                 Add to Cart
               </Button>
             </ListItem>
@@ -96,4 +123,17 @@ export default function ProductScreen() {
       </Grid>
     </Layout>
   );
+}
+
+export async function getServerSideProps(context) {
+  const { params } = context;
+  const { slug } = params;
+  await db.connect();
+  const product = await Product.findOne({ slug }).lean();
+  await db.disconnect();
+  return {
+    props: {
+      product: db.convertDocToObj(product),
+    },
+  };
 }
