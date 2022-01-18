@@ -18,7 +18,7 @@ import Image from 'next/image';
 import Product from '../../models/Product';
 import db from '../../utilities/db';
 import axios from 'axios';
-import { Store } from '../../utilities/store';
+import { Store } from '../../utilities/Store';
 import { useRouter } from 'next/router';
 
 export default function ProductScreen(props) {
@@ -103,7 +103,7 @@ export default function ProductScreen(props) {
                 </Grid>
                 <Grid item xs={6}>
                   <Typography>
-                    $ {product.countInStock > 0 ? 'In Stock' : 'Unavailable'}
+                    {product.countInStock > 0 ? 'In Stock' : 'Unavailable'}
                   </Typography>
                 </Grid>
               </Grid>

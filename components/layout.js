@@ -15,11 +15,12 @@ import { createTheme } from '@material-ui/core/styles';
 import useStyles from '../utilities/styles';
 import NextLink from 'next/link';
 // import { useRouter } from 'next/router';
-import { Store } from '../utilities/store';
+import { Store } from '../utilities/Store';
 import Cookies from 'js-cookie';
 
 export default function Layout({ title, children, description }) {
   // const router = useRouter();
+
   const { state, dispatch } = useContext(Store);
   const { darkMode, cart } = state;
 
@@ -50,13 +51,6 @@ export default function Layout({ title, children, description }) {
     },
   });
 
-  theme = createTheme(theme, {
-    palette: {
-      info: {
-        main: theme.palette.primary.main,
-      },
-    },
-  });
   const classes = useStyles();
   const darkModeChangeHandler = () => {
     dispatch({ type: darkMode ? 'DARK_MODE_OFF' : 'DARK_MODE_ON' });
