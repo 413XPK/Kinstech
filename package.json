@@ -2,7 +2,7 @@
   "name": "kinstech2",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next",
     "build": "next build",
     "start": "next start",
     "heroku-postbuild": "npm run build",
