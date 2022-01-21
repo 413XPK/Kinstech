@@ -9,7 +9,7 @@ import {
   Button,
 } from '@material-ui/core';
 import NextLink from 'next/link';
-import Layout from '../components/layout';
+import Layout from '../components/Layout';
 // import data from '../utilities/data';
 import db from '../utilities/db';
 import Product from '../models/Product';
