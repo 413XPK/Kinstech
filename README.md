@@ -46,35 +46,3 @@ npm install @material-ui/core
 npm install @material-ui/lab
 ...
 npm i notistack@next
-
-{
-"name": "kinstech",
-"private": true,
-"scripts": {
-"dev": "next",
-"build": "next build",
-"start": "next start",
-"heroku-postbuild": "npm run build",
-"lint": "next lint"
-},
-"dependencies": {
-"@material-ui/core": "^4.12.3",
-"@material-ui/icons": "^4.11.2",
-"@material-ui/lab": "^4.0.0-alpha.60",
-"axios": "^0.25.0",
-"bcryptjs": "^2.4.3",
-"js-cookie": "^3.0.1",
-"jsonwebtoken": "^8.5.1",
-"mongoose": "^6.1.6",
-"next": "12.0.8",
-"next-connect": "^0.11.0",
-"notistack": "^2.0.3",
-"react": "17.0.2",
-"react-dom": "17.0.2",
-"react-hook-form": "^7.24.2"
-},
-"devDependencies": {
-"eslint": "8.6.0",
-"eslint-config-next": "12.0.8"
-}
-}
