@@ -39,7 +39,7 @@ function Map() {
       }
     };
     fetchGoogleApiKey();
-  }, []);
+  });
 
   const [center, setCenter] = useState(defaultLocation);
   const [location, setLocation] = useState(center);
