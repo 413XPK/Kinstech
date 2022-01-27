@@ -1,1 +1,1 @@
-[https://kinstech.vercel.app/](link) to deployed App
+[link](https://kinstech.vercel.app/) to deployed App
