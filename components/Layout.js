@@ -63,6 +63,16 @@ export default function Layout({ title, description, children }) {
         main: '#A373A4',
       },
     },
+    overrides: {
+      MuiSwitch: {
+        switchBase: {
+          color: '#ffffff',
+        },
+        track: {
+          backgroundColor: '#808080',
+        },
+      },
+    },
   });
   const classes = useStyles();
 

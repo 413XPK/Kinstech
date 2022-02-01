@@ -58,6 +58,18 @@ const useStyles = makeStyles((theme) => ({
   },
   menuButton: { padding: 0 },
   mt1: { marginTop: '1rem' },
+
+  overrides: {
+    MuiSwitch: {
+      switchBase: {
+        color: '#ffffff',
+      },
+      track: {
+        backgroundColor: '#808080',
+      },
+    },
+  },
+
   // search
   searchSection: {
     display: 'none',
