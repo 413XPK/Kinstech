@@ -48,7 +48,7 @@ const data = {
       slug: 'psu-splitter',
       category: 'Cords',
       image: '/images/PSU-splitter-top.jpg',
-      price: 0.2,
+      price: 19.99,
       countInStock: 20,
       description: 'Power Supply Splitter cords',
     },

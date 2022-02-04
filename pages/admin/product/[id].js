@@ -2,7 +2,7 @@ import axios from 'axios';
 import dynamic from 'next/dynamic';
 import { useRouter } from 'next/router';
 import NextLink from 'next/link';
-import React, { useEffect, useContext, useReducer, useState } from 'react';
+import React, { useEffect, useContext, useReducer } from 'react'; //, useState
 import {
   Grid,
   List,
@@ -13,8 +13,8 @@ import {
   ListItemText,
   TextField,
   CircularProgress,
-  FormControlLabel,
-  Checkbox,
+  // FormControlLabel,
+  // Checkbox,
 } from '@material-ui/core';
 import { getError } from '../../../utilities/error';
 import { Store } from '../../../utilities/Store';
@@ -87,8 +87,8 @@ function ProductEdit({ params }) {
           setValue('slug', data.slug);
           setValue('price', data.price);
           setValue('image', data.image);
-          setValue('featuredImage', data.featuredImage);
-          setIsFeatured(data.isFeatured);
+          // setValue('featuredImage', data.featuredImage);
+          // setIsFeatured(data.isFeatured);
           setValue('category', data.category);
           setValue('countInStock', data.countInStock);
           setValue('description', data.description);
@@ -126,7 +126,7 @@ function ProductEdit({ params }) {
     price,
     category,
     image,
-    featuredImage,
+    // featuredImage,
     countInStock,
     description,
   }) => {
@@ -141,8 +141,8 @@ function ProductEdit({ params }) {
           price,
           category,
           image,
-          isFeatured,
-          featuredImage,
+          // isFeatured,
+          // featuredImage,
           countInStock,
           description,
         },
@@ -157,7 +157,7 @@ function ProductEdit({ params }) {
     }
   };
 
-  const [isFeatured, setIsFeatured] = useState(false);
+  // const [isFeatured, setIsFeatured] = useState(false);
 
   return (
     <Layout title={`Edit Product ${productId}`}>
@@ -292,7 +292,7 @@ function ProductEdit({ params }) {
                         )}
                       ></Controller>
                     </ListItem>
-                    <ListItem>
+                    {/* <ListItem>
                       <Button variant="contained" component="label">
                         Upload File
                         <input type="file" onChange={uploadHandler} hidden />
@@ -310,8 +310,8 @@ function ProductEdit({ params }) {
                           />
                         }
                       ></FormControlLabel>
-                    </ListItem>
-                    <ListItem>
+                    </ListItem> */}
+                    {/* <ListItem>
                       <Controller
                         name="featuredImage"
                         control={control}
@@ -333,7 +333,7 @@ function ProductEdit({ params }) {
                           ></TextField>
                         )}
                       ></Controller>
-                    </ListItem>
+                    </ListItem> */}
                     <ListItem>
                       <Button variant="contained" component="label">
                         Upload File
@@ -368,27 +368,7 @@ function ProductEdit({ params }) {
                         )}
                       ></Controller>
                     </ListItem>
-                    {/* <ListItem>
-                      <Controller
-                        name="brand"
-                        control={control}
-                        defaultValue=""
-                        rules={{
-                          required: true,
-                        }}
-                        render={({ field }) => (
-                          <TextField
-                            variant="outlined"
-                            fullWidth
-                            id="brand"
-                            label="Brand"
-                            error={Boolean(errors.brand)}
-                            helperText={errors.brand ? 'Brand is required' : ''}
-                            {...field}
-                          ></TextField>
-                        )}
-                      ></Controller>
-                    </ListItem> */}
+
                     <ListItem>
                       <Controller
                         name="countInStock"
